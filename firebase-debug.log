@@ -1,0 +1,26 @@
+[debug] [2018-12-06T17:53:54.678Z] ----------------------------------------------------------------------
+[debug] [2018-12-06T17:53:54.680Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only hosting
+[debug] [2018-12-06T17:53:54.680Z] CLI Version:   6.1.2
+[debug] [2018-12-06T17:53:54.680Z] Platform:      darwin
+[debug] [2018-12-06T17:53:54.680Z] Node Version:  v10.14.1
+[debug] [2018-12-06T17:53:54.681Z] Time:          Thu Dec 06 2018 09:53:54 GMT-0800 (Pacific Standard Time)
+[debug] [2018-12-06T17:53:54.681Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-12-06T17:53:54.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-06T17:53:54.690Z] > authorizing via signed-in user
+[debug] [2018-12-06T17:53:54.691Z] [iam] checking project iosbookapp for permissions ["firebase.projects.get"]
+[debug] [2018-12-06T17:53:54.692Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/iosbookapp:testIamPermissions  
+
+[debug] [2018-12-06T17:53:55.378Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-06T17:53:55.379Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/iosbookapp  
+ 
+[debug] [2018-12-06T17:53:55.619Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/trey/Desktop/webpodium'...
+[info] 
+[debug] [2018-12-06T17:53:55.620Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/1099160631159/clients/_:getWebAppConfig  
+ 
+[debug] [2018-12-06T17:53:55.999Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5005
