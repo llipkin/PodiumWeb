@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
+  <div id="hello">
     <img src="./assets/logo.png">
+        <input id ="locName" placeholder="someholder">
     <router-view/>
   </div>
 </template>

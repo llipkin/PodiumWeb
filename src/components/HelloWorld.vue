@@ -1,94 +1,53 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button v-on:click="add_city">print user</button>
+    <button v-on:click="verify_user">Login Account</button>
     <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+
   </div>
 </template>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
 
 <script>
+  var firebase = require('firebase')
+
+  import { db } from '../main'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+
+    }
+  },
+  methods: {
+    create_user () {
+      alert('create user')
+      firebase.auth().createUserWithEmailAndPassword('trieveon.cooper@gmail.com', '123456').catch(function (error) {
+        // Handle Errors here.
+        // var errorCode = error.code
+        var errorMessage = error.message
+        console.log(errorMessage)
+        // ...
+      })
+    },
+    add_city () {
+        alert("uid"+firebase.auth().currentUser.uid)
+        firebase.firestore().collection('location').add({
+          name: 'California',
+          country: 'USA'
+        })
+    },
+    verify_user () {
+      alert('log in user')
+      firebase.auth().signInWithEmailAndPassword('trieveon.lee@gmail.com', '123456').catch(function (error) {
+        // Handle Errors here.
+        // var errorCode = error.code;
+        var errorMessage = error.message
+        console.log(errorMessage)
+      })
     }
   }
 }
