@@ -4,17 +4,18 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#hello',
+  el: '#layout',
   router,
   components: { App },
   template: '<App/>'
-})
+});
 
-var firebase = require('firebase')
+var firebase = require('firebase');
+
 var config = {
   apiKey: 'AIzaSyCFvJArErxvDuY3_qcO8ZCon58qdtkRAx8',
   authDomain: 'iosbookapp.firebaseapp.com',
@@ -22,10 +23,10 @@ var config = {
   projectId: 'iosbookapp',
   storageBucket: 'iosbookapp.appspot.com',
   messagingSenderId: '1099160631159'
-}
+};
 
-firebase.initializeApp(config)
-export const db = firebase.firestore()
+firebase.initializeApp(config);
+export const db = firebase.firestore();
 
 // var firebase = require('firebase')
 // var config = {
