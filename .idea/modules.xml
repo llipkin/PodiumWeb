@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PodiumWeb.iml" filepath="$PROJECT_DIR$/.idea/PodiumWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/webpodium.iml" filepath="$PROJECT_DIR$/.idea/webpodium.iml" />
     </modules>
   </component>
 </project>

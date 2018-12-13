@@ -1,21 +1,24 @@
+/* eslint-disable camelcase */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VModal from 'vue-js-modal'
+require('@/assets/stupid.css')
 
-Vue.config.productionTip = false;
+Vue.use(VModal)
+Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#layout',
+  el: '#hello',
   router,
   components: { App },
   template: '<App/>'
-});
+})
 
-var firebase = require('firebase');
-
+var firebase = require('firebase')
 var config = {
   apiKey: 'AIzaSyCFvJArErxvDuY3_qcO8ZCon58qdtkRAx8',
   authDomain: 'iosbookapp.firebaseapp.com',
@@ -23,11 +26,12 @@ var config = {
   projectId: 'iosbookapp',
   storageBucket: 'iosbookapp.appspot.com',
   messagingSenderId: '1099160631159'
-};
-
-firebase.initializeApp(config);
-export const db = firebase.firestore();
-
+}
+firebase.initializeApp(config)
+export const db = firebase.firestore()
+Vue.use(db)
+export const store = firebase.storage()
+Vue.use(store)
 // var firebase = require('firebase')
 // var config = {
 //   apiKey: 'AIzaSyCFvJArErxvDuY3_qcO8ZCon58qdtkRAx8',
