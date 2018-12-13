@@ -33,6 +33,7 @@
 import Navigation from '../components/Navigation'
 import Router from '../router/index'
 var firebase = require('firebase')
+var logged = Boolean(false)
 self.verify_user = function () {
   console.log('checking')
   var un = document.getElementById('username').value
@@ -40,6 +41,7 @@ self.verify_user = function () {
   console.log('checking' + un + ' ' + pw)
   firebase.auth().signInWithEmailAndPassword(un, pw).then(function () {
     Router.push('/')
+    logged = true
   }).catch(function (error) {
     // Handle Errors here
     // var errorCode = error.code;
@@ -50,7 +52,9 @@ self.verify_user = function () {
 export default {
   name: 'Login',
   data () {
-    return {}
+    return {
+      logged: logged
+    }
   },
   components: {
     'Navigation': Navigation

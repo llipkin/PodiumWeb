@@ -109,6 +109,10 @@ body {
             <div class="container" style="padding-left: 55px">
             <a class="file-submit btn pulse large rounded center" v-on:click="add_image" style="background-color:#FF5A5F; width:250px; position:absolute; bottom:100px"><tt>Add</tt></a>
             </div>
+            <div style="background-color:white; width:300px; height:430px; font-size: 10px; padding-top: 20px;">
+            <h4> You must first log in to add a book</h4>
+            </div>
+          <br>
           </div>
   </div>
   <div class="half" style="padding-top:100px;padding-left:200px;">
@@ -161,13 +165,14 @@ body {
   import { db } from '../main'
   import {store} from '../main'
   import Navigation from '../components/Navigation'
+  import Login from '../components/Login'
   var selectedFile;
        self.file_changed = function(event) {
         var input = event.target;
         var file = input.files[0];
         selectedFile = file;
         console.log(selectedFile + 'file');
-    };
+       };
 
   self.add_image = function(event) {
     var file = selectedFile;
@@ -200,20 +205,25 @@ body {
         console.log('File available at', downloadURL);
         var posts = [];
         posts.push(downloadURL)
-
-      firebase.firestore().collection('books').doc('all').collection('recent').add(
-        {
-              isActive: true,
-              isbn: document.getElementById('isbn').value,
-              meetingPlace:document.getElementById('meetingplace').value,
-              photos:posts,
-              price: document.getElementById('price').value,
-              sellerId: firebase.auth().currentUser.uid,
-              sellerName: "Rob",
-              sellerPhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArwyrotMyhHuQ7JJif9C_bZCRKNWgGHcpQYn45jPdBHzCCBjd",
-              title: document.getElementById('title').value
-        })
+      if (Login.data().logged == true) {
+        console.log("logged in here")
+        firebase.firestore().collection('books').doc('all').collection('recent').add(
+          {
+            isActive: true,
+            isbn: document.getElementById('isbn').value,
+            meetingPlace: document.getElementById('meetingplace').value,
+            photos: posts,
+            price: document.getElementById('price').value,
+            sellerId: firebase.auth().currentUser.uid,
+            sellerName: "Rob",
+            sellerPhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArwyrotMyhHuQ7JJif9C_bZCRKNWgGHcpQYn45jPdBHzCCBjd",
+            title: document.getElementById('title').value
+          })
         Router.push('/BookTable')
+      }
+      else {
+        console.log("didn't work here")
+      }
       });
     });
   };
